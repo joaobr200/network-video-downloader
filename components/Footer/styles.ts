@@ -6,9 +6,9 @@ export const Container = css({
   margin: "0 auto",
 });
 
-export const Header = css({
+export const Footer = css({
   width: "100%",
-  height: "90px",
+  height: "40px",
   padding: "10px",
   background: "$background",
 
@@ -16,15 +16,14 @@ export const Header = css({
   alignItems: "center",
   justifyContent: "space-between",
   boxShadow: "$xl",
-
-  "> div a": {
-    color: "$textColor",
-    fontWeight: "700",
-    fontSize: "1.5rem",
-  },
 });
 
-export const MenuIcon = css({
+export const GithubIcon = css({
   fontSize: "1.5rem",
   color: "$text",
+  transition: "transform 200ms ease",
+
+  "&:hover": {
+    transform: "scale(1.1,1.1)",
+  },
 });

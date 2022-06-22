@@ -1,13 +1,21 @@
 import { css } from "@stitches/react";
 
 export const DownloadSection = css({
-  margin: "40px 24px 40px 24px",
+  margin: "24px 24px 40px 24px",
 });
 
-export const From = css({});
+export const From = css({
+  width: "100%",
+  maxWidth: "1280px",
+  margin: "0 auto",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+});
 
 export const InputWrapper = css({
   position: "relative",
+  width: "100%",
 
   "> svg": {
     position: "absolute",

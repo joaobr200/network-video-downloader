@@ -1,24 +1,20 @@
 import React from "react";
 
 import * as S from "./styles";
-import { FaGithub } from "react-icons/fa";
+import { IoMdMenu } from "react-icons/io";
 
 const Header: React.FC = () => {
   return (
-    <header className={S.Header()}>
-      <div>
-        <h1>SV Downloader</h1>
-      </div>
-      <div>
-        <a
-          href="https://www.github.com/joaobr200"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <FaGithub className={S.GithubIcon()} />
-        </a>
-      </div>
-    </header>
+    <div className={`${S.Container()}`}>
+      <header className={`${S.Header()}`}>
+        <div>
+          <a href="/">SV Downloader</a>
+        </div>
+        <div>
+          <IoMdMenu className={S.MenuIcon()} />
+        </div>
+      </header>
+    </div>
   );
 };
 

@@ -1,8 +1,17 @@
 import { css } from "@stitches/react";
 
 export const HeroSection = css({
-  margin: "150px 24px 40px 24px",
-  height: "calc(100vh - 210px)",
+  margin: "88px 24px 40px 24px",
+  height: "100%",
+  maxHeight: "100vh",
+
+  "@media screen and (min-width: 640px)": {
+    marginTop: "100px",
+  },
+
+  "@media screen and (min-width: 1024px)": {
+    marginTop: "60px",
+  },
 });
 
 export const HeroWrapper = css({
@@ -11,11 +20,26 @@ export const HeroWrapper = css({
   alignItems: "center",
   justifyContent: "center",
   textAlign: "center",
-  gap: "40px",
+  gap: "28px",
+  width: "100%",
+  maxWidth: "1280px",
 
   "> img": {
     width: "100%",
     maxWidth: "350px",
+    height: "100%",
+  },
+
+  "@media screen and (min-width: 1024px)": {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "start",
+    margin: "0 auto",
+
+    "> a": {
+      display: "none",
+    },
   },
 });
 
@@ -23,16 +47,41 @@ export const HeroContent = css({
   display: "flex",
   flexDirection: "column",
   gap: "40px",
+  padding: "0.5rem",
   "> h1": {
-    fontSize: "28px",
+    fontSize: "1.8rem",
     fontWeight: "700",
-    lineHeight: "30px",
+    lineHeight: "2.7rem",
   },
 
   "> p": {
-    fontSize: "15px",
-    lineHeight: "20px",
-    textAlign: "center",
+    fontSize: "1rem",
+    lineHeight: "1.5rem",
+  },
+
+  "@media screen and (min-width: 640px)": {
+    "> h1": {
+      fontSize: "2rem",
+      fontWeight: "700",
+      lineHeight: "3rem",
+    },
+    "> p": {
+      fontSize: "1.2rem",
+      lineHeight: "1.7rem",
+    },
+  },
+
+  "@media screen and (min-width: 1024px)": {
+    textAlign: "start",
+    "> h1": {
+      fontSize: "3rem",
+      fontWeight: "700",
+      lineHeight: "4rem",
+    },
+    "> p": {
+      fontSize: "1.2rem",
+      lineHeight: "1.7rem",
+    },
   },
 });
 

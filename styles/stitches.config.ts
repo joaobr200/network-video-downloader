@@ -34,12 +34,22 @@ export const globalStyles = globalCss({
   },
 
   body: {
+    width: "100%",
+    maxWidth: "1920px",
+    margin: "0 auto",
     background: "$black",
+    boxShadow: "$xl",
     color: "$text",
     fontFamily: "Roboto, sans-serif",
   },
 
   a: {
     textDecoration: "none",
+  },
+
+  ".container": {
+    width: "100%",
+    maxWidth: "1280px",
+    margin: "0 auto",
   },
 });
