@@ -21,12 +21,6 @@ export default class Document extends NextDocument {
             href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
             rel="stylesheet"
           ></link>
-          <title>Network Video Downloander</title>
-          <meta
-            name="description"
-            content="Baixe qualquer vídeo do youtube, facebook, tiktok e outras networks, confira a lista em nosso site."
-          />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
         </Head>
         <body>
           <Main />

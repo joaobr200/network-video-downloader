@@ -7,10 +7,22 @@ import Video from "../components/Video";
 import * as S from "../styles/Home";
 import { FaArrowRight } from "react-icons/fa";
 import Footer from "../components/Footer";
+import { useAppDispatch } from "../store/hook";
+import { fetchVideo } from "../store/duck/fetchVideo";
+import Head from "next/head";
 
 const Home: NextPage = () => {
   return (
     <>
+      <Head>
+        <title>SV Downloader</title>
+        <meta
+          name="description"
+          content="Baixe qualquer vídeo do youtube, facebook, tiktok e outras networks, confira a lista em nosso site."
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+
       <Header />
       <main>
         <section className={S.HeroSection()}>
@@ -41,7 +53,6 @@ const Home: NextPage = () => {
         </section>
         <Download />
       </main>
-      <Video />
       <Footer />
     </>
   );
