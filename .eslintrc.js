@@ -14,7 +14,7 @@ module.exports = {
   },
   plugins: ["react", "@typescript-eslint"],
   rules: {
-    quotes: "double",
+    quotes: 0,
     semi: "false",
   },
 };
