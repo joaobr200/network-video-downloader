@@ -5,7 +5,7 @@ import { FaCentercode, FaColumns } from "react-icons/fa";
 export const Container = css({
   width: "100%",
   maxWidth: "1280px",
-  margin: "0 auto",
+  margin: "24px auto",
 });
 
 export const VideoArticle = css({
@@ -20,6 +20,8 @@ export const VideoArticle = css({
   "@media screen and (min-width: 1024px)": {
     margin: "24px auto",
     flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
   },
 
   ...Card,
@@ -29,22 +31,35 @@ export const Frame = css({
   width: "100%",
   maxWidth: "500px",
   height: "333px",
+  margin: "1rem 0 0 0",
 });
 
 export const VideoDetails = css({
+  width: "90%",
+  height: "333px",
   textAlign: "center",
   display: "flex",
+  flex: 1,
   flexDirection: "column",
   alignItems: "center",
-  justifyContent: "space-between",
   gap: "50px",
 
   "@media screen and (min-width: 1024px)": {
     textAlign: "start",
-    gap: "150px",
+    alignItems: "flex-start",
 
-    "> div:nth-child(2)": {
-      alignSelf: "flex-end",
+    "> div:nth-child(1)": {
+      display: "flex",
+      flexDirection: "column",
+      flex: 1,
     },
   },
+});
+
+export const cleanVideo = css({
+  position: "absolute",
+  top: 0,
+  right: 0,
+  cursor: "pointer",
+  fontSize: "2.2rem",
 });

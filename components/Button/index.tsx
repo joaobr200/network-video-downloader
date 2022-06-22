@@ -7,6 +7,7 @@ export const Button = css({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  border: "none",
   borderRadius: "5px",
 
   background: "$primary",
