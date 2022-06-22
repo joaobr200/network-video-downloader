@@ -1,4 +1,4 @@
-import { configureStore, ThunkDispatch } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import fetchVideoReducer from "./duck/fetchVideo";
 
 const myStore = configureStore({
