@@ -10,7 +10,7 @@
 
 <img src="./.github/image1.webp" alt="First Image" />
 
-<img src="./.github/image1.webp" alt="Second image" />
+<img src="./.github/image2.webp" alt="Second image" />
 
 ## ✅ About
 
