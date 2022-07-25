@@ -3,7 +3,6 @@ import { css } from "@stitches/react";
 export const HeroSection = css({
   margin: "88px 24px 40px 24px",
   height: "100%",
-  maxHeight: "100vh",
 
   "@media screen and (min-width: 640px)": {
     marginTop: "100px",
@@ -23,11 +22,16 @@ export const HeroWrapper = css({
   gap: "28px",
   width: "100%",
   maxWidth: "1280px",
+  position: "relative",
 
   "> img": {
     width: "100%",
     maxWidth: "350px",
     height: "100%",
+    position: "absolute",
+    zIndex: -1,
+    opacity: 0.3,
+    top: 150,
   },
 
   "@media screen and (min-width: 1024px)": {
@@ -39,6 +43,12 @@ export const HeroWrapper = css({
 
     "> a": {
       display: "none",
+    },
+
+    "> img": {
+      position: "static",
+      zIndex: 0,
+      opacity: 1,
     },
   },
 });
