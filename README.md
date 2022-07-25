@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-🗣👥 Faça download de qualquer vídeo do youtube
+🗣👥 Faça download de qualquer vídeo do youtube.
 </p>
 
 ## 🎨 Screen
