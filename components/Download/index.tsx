@@ -77,7 +77,7 @@ function Download() {
             />
           )
         : ""}
-      {video.error.ok && video.error.message && (
+      {video.error?.ok && video.error.message && (
         <span>{video.error.message}</span>
       )}
     </section>
