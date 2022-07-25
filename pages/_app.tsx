@@ -1,7 +1,7 @@
 import type { AppProps } from "next/app";
 import { Provider } from "react-redux";
 import myStore from "../store";
-import { globalStyles } from "../styles/stitches.config";
+import { globalStyles } from "../stitches.config";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
