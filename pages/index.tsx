@@ -1,9 +1,11 @@
 import type { NextPage } from "next";
+import Image from "next/image";
+import Head from "next/head";
 import Header from "../components/Header";
 import Download from "../components/Download";
+import midiaImg from "../public/static/midias.png";
 
 import * as S from "../styles/pages/Home";
-import Head from "next/head";
 
 const Home: NextPage = () => {
   return (
@@ -33,9 +35,13 @@ const Home: NextPage = () => {
               </p>
             </div>
 
-            <img
-              src="/static/midias.png"
+            <Image
+              src={midiaImg}
               alt="Midias Suportadas para download"
+              width={800}
+              height={600}
+              quality={100}
+              placeholder="blur"
             />
           </div>
         </section>
