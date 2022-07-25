@@ -2,8 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   api: {
-    responseLimit: false
-  }
+    responseLimit: "10mb",
+  },
 };
 
 module.exports = nextConfig;
