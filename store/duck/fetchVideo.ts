@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import api, { AxiosError } from "axios";
 
 interface fetchVideoResponse {
   title: string;
@@ -7,39 +8,47 @@ interface fetchVideoResponse {
   url: string;
 }
 
-export const fetchVideo = createAsyncThunk(
-  "video/fetchVideo",
-  async (url: string, { rejectWithValue }) => {
-    try {
-      const response = await fetch(`/api/video?url=${url}`);
-
-      if (response.status === 400) {
-        const error = {
-          message: await response.json(),
-          status: await response.status,
-          ok: await response.ok,
-        };
-        return rejectWithValue(error);
-      }
-
-      const data = await response.json();
-      return data;
-    } catch (err) {
-      console.log(`catch err  ${err}`);
-    }
-  }
-);
-
-interface fetchVideoError {
-  message: string;
-  status: number;
+interface fetchVideoResponseError {
+  message: string | undefined;
+  status: number | undefined;
   ok: boolean;
 }
+
+export const fetchVideo = createAsyncThunk<
+  fetchVideoResponse,
+  string,
+  { rejectValue: fetchVideoResponseError }
+>("video/fetchVideo", async (url: string, { rejectWithValue }) => {
+  const response = await api
+    .post<fetchVideoResponse>(`/api/video`, {
+      url,
+    })
+    .then((r) => r.data)
+    .catch((err: AxiosError<{ error: string }>) => {
+      const res = err.response;
+
+      let error = {
+        message: res?.data.error,
+        status: res?.status,
+        ok: true,
+      };
+
+      return rejectWithValue(error);
+    });
+
+  return response;
+});
+
+const errorInitialState: fetchVideoResponseError = {
+  ok: false,
+  message: "",
+  status: 0,
+};
 
 interface fetchVideoState {
   success: boolean;
   loading: boolean;
-  error: boolean;
+  error: fetchVideoResponseError | undefined;
   data: fetchVideoResponse | null;
 }
 
@@ -48,7 +57,7 @@ export const fetchVideoSlice = createSlice({
   initialState: {
     success: false,
     loading: false,
-    error: false,
+    error: errorInitialState,
     data: null,
   } as fetchVideoState,
   reducers: {
@@ -57,15 +66,15 @@ export const fetchVideoSlice = createSlice({
     },
   },
   extraReducers: ({ addCase }) => {
-    addCase(fetchVideo.pending, (state, action) => {
+    addCase(fetchVideo.pending, (state) => {
       state.loading = true;
-      state.error = false;
+      state.error = errorInitialState;
       state.success = false;
       state.data = null;
     });
 
     addCase(fetchVideo.rejected, (state, action) => {
-      state.error = true;
+      state.error = action?.payload;
       state.loading = false;
       state.success = false;
       state.data = null;
@@ -76,8 +85,7 @@ export const fetchVideoSlice = createSlice({
       (state, action: PayloadAction<fetchVideoResponse>) => {
         state.success = true;
         state.loading = false;
-        (state.error = false), (state.data = action.payload);
-        console.log(`fulfilled ${action.payload}`);
+        (state.error = errorInitialState), (state.data = action.payload);
       }
     );
   },
