@@ -1,9 +1,9 @@
-import { css } from "@stitches/react";
+import { css } from "../../stitches.config";
 
 export const Container = css({
   width: "100%",
   maxWidth: "1280px",
-  margin: "0 auto"
+  margin: "0 auto",
 });
 
 export const Header = css({
@@ -20,11 +20,11 @@ export const Header = css({
   "> div a": {
     color: "$textColor",
     fontWeight: "700",
-    fontSize: "1.5rem"
-  }
+    fontSize: "1.5rem",
+  },
 });
 
 export const MenuIcon = css({
   fontSize: "1.5rem",
-  color: "$text"
+  color: "$text",
 });

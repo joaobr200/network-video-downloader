@@ -1,12 +1,12 @@
-import { css } from "@stitches/react";
+import { css } from "../../stitches.config";
 
 export const DownloadSection = css({
   margin: "24px 24px 40px 24px",
   height: "100%",
 
   "@media screen and (min-width: 1024px)": {
-    height: "100%"
-  }
+    height: "100%",
+  },
 });
 
 export const From = css({
@@ -15,7 +15,7 @@ export const From = css({
   margin: "0 auto",
   display: "flex",
   alignItems: "center",
-  justifyContent: "center"
+  justifyContent: "center",
 });
 
 export const InputWrapper = css({
@@ -26,8 +26,8 @@ export const InputWrapper = css({
     position: "absolute",
     top: "9px",
     left: "9px  ",
-    fontSize: "28px"
-  }
+    fontSize: "28px",
+  },
 });
 
 export const Input = css({
@@ -42,8 +42,8 @@ export const Input = css({
   variants: {
     withIcon: {
       true: {
-        padding: "0px 0px 0px 40px"
-      }
-    }
-  }
+        padding: "0px 0px 0px 40px",
+      },
+    },
+  },
 });

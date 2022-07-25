@@ -1,4 +1,4 @@
-import { css } from "@stitches/react";
+import { css } from "../../stitches.config";
 
 export const HeroSection = css({
   margin: "88px 24px 40px 24px",
