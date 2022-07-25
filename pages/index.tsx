@@ -1,14 +1,8 @@
 import type { NextPage } from "next";
 import Header from "../components/Header";
-import Button from "../components/Button";
 import Download from "../components/Download";
-import Video from "../components/Video";
 
-import * as S from "../styles/Home";
-import { FaArrowRight } from "react-icons/fa";
-import Footer from "../components/Footer";
-import { useAppDispatch } from "../store/hook";
-import { fetchVideo } from "../store/duck/fetchVideo";
+import * as S from "../styles/pages/Home";
 import Head from "next/head";
 
 const Home: NextPage = () => {
@@ -38,22 +32,15 @@ const Home: NextPage = () => {
                 download.
               </p>
             </div>
-            <a
-              href="#download"
-              title="Cliquei aqui para fazer download de qualquer vídeo"
-              className={Button({ withIcon: true })}
-            >
-              FAZER DOWNLOAD
-              <div className={S.HeroIconButton()}>
-                <FaArrowRight />
-              </div>
-            </a>
-            <img src="/midias.png" alt="Midias Suportadas para download" />
+
+            <img
+              src="/static/midias.png"
+              alt="Midias Suportadas para download"
+            />
           </div>
         </section>
         <Download />
       </main>
-      <Footer />
     </>
   );
 };
