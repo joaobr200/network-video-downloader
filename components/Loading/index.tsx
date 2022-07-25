@@ -1,17 +1,13 @@
-import React from "react";
+import { useRef, useEffect } from "react";
+import { useScrollIntoView } from "../../hooks/useScrollIntoView";
 
 import Spinner from "./Spinner";
 
 import * as S from "./styles";
 
 const Loading: React.FC = () => {
-  const loadingRef = React.useRef<HTMLDivElement>(null);
-  React.useEffect(() => {
-    const element = loadingRef.current;
-    console.log("scroll");
-
-    element?.scrollIntoView();
-  }, []);
+  const loadingRef = useRef<HTMLDivElement>(null);
+  useScrollIntoView(loadingRef);
   return (
     <div className={S.Container()} ref={loadingRef}>
       <div className={S.LoadingWrapper()}>

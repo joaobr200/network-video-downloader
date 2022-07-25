@@ -1,6 +1,5 @@
-import { css } from "@stitches/react";
+import { css } from "../../stitches.config";
 import Card from "../Card";
-import { FaCentercode, FaColumns } from "react-icons/fa";
 
 export const Container = css({
   width: "100%",
@@ -10,15 +9,16 @@ export const Container = css({
 
 export const VideoArticle = css({
   display: "flex",
+  width: "100%",
+  height: "100%",
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
   gap: "40px",
 
-  margin: "0 24px 15px 24px",
-
-  "@media screen and (min-width: 1024px)": {
+  "@bp2": {
     margin: "24px auto",
+    height: "400px",
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: "flex-start",
@@ -29,37 +29,64 @@ export const VideoArticle = css({
 
 export const Frame = css({
   width: "100%",
-  maxWidth: "500px",
   height: "333px",
-  margin: "1rem 0 0 0",
+  maxWidth: "500px",
+
+  "@bp2": {
+    height: "100%",
+  },
 });
 
 export const VideoDetails = css({
   width: "90%",
-  height: "333px",
-  textAlign: "center",
+  height: "100%",
   display: "flex",
   flex: 1,
   flexDirection: "column",
-  alignItems: "center",
-  gap: "50px",
+  gap: "12px",
+  marginBottom: "1.5rem",
 
-  "@media screen and (min-width: 1024px)": {
+  "@bp1": {
+    textAlign: "center",
+  },
+
+  "@bp2": {
     textAlign: "start",
     alignItems: "flex-start",
-
-    "> div:nth-child(1)": {
-      display: "flex",
-      flexDirection: "column",
-      flex: 1,
-    },
   },
 });
 
-export const cleanVideo = css({
+export const VideoDownload = css({
+  width: "100%",
+  height: "100%",
+  display: "flex",
+  flexWrap: "wrap",
+  alignItems: "center",
+  justifyContent: "flex-start",
+  gap: "12px",
+
+  "@bp1": {
+    justifyContent: "center",
+  },
+
+  "@bp2": {
+    justifyContent: "flex-start",
+  },
+});
+
+export const cleanVideoButton = css({
   position: "absolute",
   top: 0,
   right: 0,
   cursor: "pointer",
   fontSize: "2.2rem",
+
+  background: "transparent",
+  border: "none",
+
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+
+  color: "$text",
 });

@@ -1,5 +1,5 @@
-import React from "react";
-import { validateUrlByRegex } from "../../helpers/URLregex";
+import React, { useState } from "react";
+import { validateUrl } from "../../utils/validateUrl";
 import { fetchVideo } from "../../store/duck/fetchVideo";
 import { useAppDispatch, useAppSelector } from "../../store/hook";
 import NetworkIcon, { TNetwork } from "../NetworkIcon";
@@ -8,53 +8,58 @@ import Loading from "../Loading";
 
 import * as S from "./styles";
 
-const Download: React.FC = () => {
-  const [inputState, setInputState] = React.useState("");
-  const [inputWithIcon, setInputWithIcon] = React.useState<TNetwork>("");
+function Download() {
+  const [inputState, setInputState] = useState("");
+  const [inputWithIcon, setInputWithIcon] = useState<TNetwork>("");
   const dispatch = useAppDispatch();
   const { video } = useAppSelector((state) => state);
 
-  function urlValidate(url: string) {
-    const network = validateUrlByRegex(url);
+  function handleValidateUrl(url: string): TNetwork {
+    const network = validateUrl(url);
     setInputWithIcon(network);
+
+    return network;
   }
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
-    dispatch(fetchVideo(inputState));
+    if (handleValidateUrl(inputState) === "error") {
+      console.error("URL INVÁLIDA!");
+      return;
+    }
 
-    return;
+    dispatch(fetchVideo(inputState));
   }
 
   function handlePaste(e: React.ClipboardEvent) {
     const pasteData = e.clipboardData.getData("text");
 
-    urlValidate(pasteData);
+    if (handleValidateUrl(pasteData) === "error") {
+      console.error("URL INVÁLIDA!");
+      return;
+    }
 
     dispatch(fetchVideo(pasteData));
-
-    return;
   }
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const data = e.target.value;
-
-    urlValidate(data);
-
-    return;
+    setInputState(data);
   }
+
   return (
     <section id="download" className={S.DownloadSection()}>
       <form onSubmit={(e) => handleSubmit(e)} className={S.From()}>
-        <label htmlFor="download" />
         <div className={S.InputWrapper()}>
           <input
             type="text"
             name="download"
             id="download"
             placeholder="Cole o link do vídeo aqui..."
-            className={S.Input({ withIcon: inputWithIcon ? true : false })}
+            className={S.Input({
+              withIcon: Boolean(inputWithIcon),
+            })}
             onPaste={(e) => handlePaste(e)}
             onChange={(e) => handleChange(e)}
           />
@@ -72,9 +77,11 @@ const Download: React.FC = () => {
             />
           )
         : ""}
-      {video.error && <h1>URL Inválida</h1>}
+      {video.error.ok && video.error.message && (
+        <span>{video.error.message}</span>
+      )}
     </section>
   );
-};
+}
 
 export default Download;

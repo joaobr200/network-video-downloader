@@ -1,5 +1,3 @@
-import { FC } from "react";
-
 import { FaFacebook, FaYoutube } from "react-icons/fa";
 import { FiXCircle } from "react-icons/fi";
 
@@ -9,18 +7,20 @@ interface NetworkIconProps {
   network: TNetwork;
 }
 
-const NetworkIcon: FC<NetworkIconProps> = ({ network }) => {
+function NetworkIcon({ network }: NetworkIconProps) {
   if (network === "youtube") {
     return <FaYoutube color="#FF0000" />;
   }
+
   if (network === "facebook") {
     return <FaFacebook color="#4267B2" />;
   }
+
   if (network === "error") {
     return <FiXCircle color="#FF0000" />;
   }
 
   return <></>;
-};
+}
 
 export default NetworkIcon;
