@@ -47,3 +47,25 @@ export const Input = css({
     },
   },
 });
+
+export const ClearInput = css({
+  position: "absolute",
+  top: 0,
+  right: 0,
+
+  width: 43,
+  height: "100%",
+
+  color: "$white",
+  background: "$primary",
+  border: "none",
+  borderTopRightRadius: "4px",
+  borderBottomRightRadius: "4px",
+  cursor: "pointer",
+
+  transition: "background 100ms linear",
+
+  "&:hover": {
+    background: "$primaryHover",
+  },
+});

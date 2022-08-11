@@ -7,6 +7,7 @@ import Video from "../Video";
 import Loading from "../Ui/Loading";
 
 import * as S from "./styles";
+import { FiX } from "react-icons/fi";
 
 const Download = () => {
   const [inputValue, setInputValue] = useState("");
@@ -42,6 +43,7 @@ const Download = () => {
 
   function handlePaste(e: React.ClipboardEvent) {
     const pasteData = e.clipboardData.getData("text");
+    setInputValue(pasteData);
 
     if (handleValidateUrl(pasteData) === "error") {
       console.error("URL INVÁLIDA!");
@@ -69,9 +71,21 @@ const Download = () => {
             className={S.Input({
               withIcon: Boolean(inputWithIcon),
             })}
+            disabled={video.loading}
+            value={inputValue}
             onPaste={(e) => handlePaste(e)}
             onChange={(e) => handleChange(e)}
           />
+          {inputValue && (
+            <button
+              className={S.ClearInput()}
+              type="button"
+              title="Limpar caixa de texto"
+              onClick={() => setInputValue("")}
+            >
+              <FiX size={22} />
+            </button>
+          )}
         </div>
       </form>
       {video.loading && <Loading />}
