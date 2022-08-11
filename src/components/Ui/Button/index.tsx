@@ -1,4 +1,4 @@
-import { css } from "../../../stitches.config";
+import { css } from "../../../../stitches.config";
 
 export const Button = css({
   fontSize: "14px",
@@ -7,6 +7,7 @@ export const Button = css({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  columnGap: "12px",
   border: "none",
   borderRadius: "5px",
 
@@ -38,11 +39,6 @@ export const Button = css({
       full: {
         width: "100%",
         height: "56px",
-      },
-    },
-    withIcon: {
-      true: {
-        gap: "10px",
       },
     },
   },

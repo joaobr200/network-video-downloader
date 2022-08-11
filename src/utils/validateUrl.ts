@@ -1,4 +1,4 @@
-import { TNetwork } from "../components/NetworkIcon";
+import { TNetwork } from "../components/Ui/NetworkIcon";
 
 interface IURLRegexs {
   network: TNetwork;

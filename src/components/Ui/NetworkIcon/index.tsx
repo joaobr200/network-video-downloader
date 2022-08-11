@@ -1,7 +1,7 @@
-import { FaFacebook, FaYoutube } from "react-icons/fa";
+import { FaYoutube } from "react-icons/fa";
 import { FiXCircle } from "react-icons/fi";
 
-export type TNetwork = "" | "youtube" | "facebook" | "error";
+export type TNetwork = "" | "youtube" | "error";
 
 interface NetworkIconProps {
   network: TNetwork;
@@ -10,10 +10,6 @@ interface NetworkIconProps {
 function NetworkIcon({ network }: NetworkIconProps) {
   if (network === "youtube") {
     return <FaYoutube color="#FF0000" />;
-  }
-
-  if (network === "facebook") {
-    return <FaFacebook color="#4267B2" />;
   }
 
   if (network === "error") {

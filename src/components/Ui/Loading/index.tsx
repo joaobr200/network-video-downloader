@@ -1,5 +1,5 @@
 import { useRef, useEffect } from "react";
-import { useScrollIntoView } from "../../hooks/useScrollIntoView";
+import { useScrollIntoView } from "../../../hooks/useScrollIntoView";
 
 import Spinner from "./Spinner";
 

@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { validateUrl } from "../../utils/validateUrl";
 import { fetchVideo } from "../../store/duck/fetchVideo";
 import { useAppDispatch, useAppSelector } from "../../store/hook";
-import NetworkIcon, { TNetwork } from "../NetworkIcon";
+import NetworkIcon, { TNetwork } from "../Ui/NetworkIcon";
 import Video from "../Video";
-import Loading from "../Loading";
+import Loading from "../Ui/Loading";
 
 import * as S from "./styles";
 
@@ -58,8 +58,9 @@ const Download = () => {
 
   return (
     <section id="download" className={S.DownloadSection()}>
-      <form onSubmit={(e) => handleSubmit(e)} className={S.From()}>
+      <form onSubmit={handleSubmit} className={S.From()}>
         <div className={S.InputWrapper()}>
+          {inputWithIcon && <NetworkIcon network={inputWithIcon} />}
           <input
             type="text"
             name="download"
@@ -71,7 +72,6 @@ const Download = () => {
             onPaste={(e) => handlePaste(e)}
             onChange={(e) => handleChange(e)}
           />
-          {inputWithIcon && <NetworkIcon network={inputWithIcon} />}
         </div>
       </form>
       {video.loading && <Loading />}
