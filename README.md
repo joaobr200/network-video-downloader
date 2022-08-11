@@ -16,7 +16,7 @@
 
 - Para fazer a busca do vídeo do youtube usei a lib **ytdl**
 
-- Ao colar link do vídeo no input um dispatch é relaizado para redux enviar esse link para **/api/video** que ira fazer validação dessa url e retornar o vídeo em si junto com os links disponível para download.
+- Ao colar link do vídeo no input um dispatch é realizado para redux enviar esse link para **/api/video** que ira fazer validação dessa url e retornar o vídeo em si junto com os links disponível para download.
 
 - Criei um botão para fazer download direto, sem precisar ir no link, mas o nextjs limita a transferência de dados em 5MB.
 
