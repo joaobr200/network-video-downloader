@@ -1,4 +1,4 @@
-import { css, keyframes } from "../../stitches.config";
+import { css, keyframes } from "../../../stitches.config";
 
 export const Container = css({
   width: "100%",

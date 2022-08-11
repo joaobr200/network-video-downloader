@@ -3,7 +3,7 @@ import Image from "next/image";
 import Head from "next/head";
 import Header from "../components/Header";
 import Download from "../components/Download";
-import midiasImg from "../public/static/midias.png";
+import midiasImg from "../../public/static/midias.png";
 
 import * as S from "../styles/pages/Home";
 import { Rainbow } from "../components/Ui/Rainbow";

@@ -1,4 +1,4 @@
-import { css } from "../../stitches.config";
+import { css } from "../../../stitches.config";
 
 export const DownloadSection = css({
   margin: "24px 24px 40px 24px",

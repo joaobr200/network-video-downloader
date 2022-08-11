@@ -1,4 +1,4 @@
-import { css } from "../../stitches.config";
+import { css } from "../../../stitches.config";
 import { Card } from "../Card";
 
 export const Container = css({
