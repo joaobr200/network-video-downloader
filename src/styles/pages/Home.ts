@@ -47,6 +47,10 @@ export const HeroWrapper = css({
 export const HeroImage = css({
   display: "none",
 
+  "> svg": {
+    fill: "#fff",
+  },
+
   "@bp2": {
     display: "block",
   },
