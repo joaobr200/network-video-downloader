@@ -8,12 +8,20 @@ import Loading from "../Loading";
 
 import * as S from "./styles";
 
-function Download() {
-  const [inputState, setInputState] = useState("");
+const Download = () => {
+  const [inputValue, setInputValue] = useState("");
+
+  // AFTER SUBMIT AND VALIDATE URL, THIS STATE SAVE THE WHICHI NETWORK FOR DOWNLOAD
   const [inputWithIcon, setInputWithIcon] = useState<TNetwork>("");
+
   const dispatch = useAppDispatch();
   const { video } = useAppSelector((state) => state);
 
+  /**
+   * This function takes a string and returns a TNetwork object.
+   * @param {string} url - string - the url to validate
+   * @returns the network object.
+   */
   function handleValidateUrl(url: string): TNetwork {
     const network = validateUrl(url);
     setInputWithIcon(network);
@@ -24,12 +32,12 @@ function Download() {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
-    if (handleValidateUrl(inputState) === "error") {
+    if (handleValidateUrl(inputValue) === "error") {
       console.error("URL INVÁLIDA!");
       return;
     }
 
-    dispatch(fetchVideo(inputState));
+    dispatch(fetchVideo(inputValue));
   }
 
   function handlePaste(e: React.ClipboardEvent) {
@@ -45,7 +53,7 @@ function Download() {
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const data = e.target.value;
-    setInputState(data);
+    setInputValue(data);
   }
 
   return (
@@ -67,21 +75,12 @@ function Download() {
         </div>
       </form>
       {video.loading && <Loading />}
-      {video.success
-        ? video.data && (
-            <Video
-              title={video.data.title}
-              duration={video.data.duration}
-              url={video.data.url}
-              embed={video.data.embed}
-            />
-          )
-        : ""}
+      {video.success ? video.data && <Video data={video.data} /> : ""}
       {video.error?.ok && video.error.message && (
         <span>{video.error.message}</span>
       )}
     </section>
   );
-}
+};
 
 export default Download;

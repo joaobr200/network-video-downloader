@@ -3,9 +3,10 @@ import Image from "next/image";
 import Head from "next/head";
 import Header from "../components/Header";
 import Download from "../components/Download";
-import midiaImg from "../public/static/midias.png";
+import midiasImg from "../public/static/midias.png";
 
 import * as S from "../styles/pages/Home";
+import { Rainbow } from "../components/Ui/Rainbow";
 
 const Home: NextPage = () => {
   return (
@@ -18,8 +19,10 @@ const Home: NextPage = () => {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
+      <Rainbow />
 
       <Header />
+
       <main>
         <section className={S.HeroSection()}>
           <div className={`${S.HeroWrapper()}`}>
@@ -35,14 +38,16 @@ const Home: NextPage = () => {
               </p>
             </div>
 
-            <Image
-              src={midiaImg}
-              alt="Midias Suportadas para download"
-              width={800}
-              height={600}
-              quality={100}
-              placeholder="blur"
-            />
+            <div className={S.HeroImage()}>
+              <Image
+                src={midiasImg}
+                alt="Midias Suportadas para download"
+                width={800}
+                height={600}
+                quality={100}
+                placeholder="blur"
+              />
+            </div>
           </div>
         </section>
         <Download />

@@ -1,15 +1,11 @@
-import { MutableRefObject, useCallback } from "react";
+import { MutableRefObject, useCallback, useEffect } from "react";
 
 export function useScrollIntoView<T extends HTMLElement | null>(
   ref: MutableRefObject<T>
 ) {
-  const element = ref.current;
-
-  const scrollToElement = useCallback(() => {
-    element?.scrollIntoView(true);
+  useEffect(() => {
+    ref.current?.scrollIntoView(true);
   }, []);
-
-  scrollToElement();
 
   return;
 }

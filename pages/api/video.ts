@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse, NextApiHandler } from "next";
 import ytdl from "ytdl-core";
-import secondsToHms from "../../utils/formatSeconds";
+import { formatSeconds } from "../../utils/formatSeconds";
 
 interface VideoApiRequest extends NextApiRequest {
   body: {
@@ -39,24 +39,19 @@ const handler: NextApiHandler = async (
     });
   }
 
-  const { hours, minutes, seconds } = secondsToHms(
+  const filteredVideoAudio = ytdl.filterFormats(info.formats, "video");
+  const filterdOnlyAudio = ytdl.filterFormats(info.formats, "audioonly");
+
+  const formatsInMp4 = filteredVideoAudio.filter(
+    (format) => format.container === "mp4"
+  );
+
+  const formatsInWebm = filteredVideoAudio.filter(
+    (format) => format.container === "webm"
+  );
+
+  const { hours, minutes, seconds } = formatSeconds(
     info.videoDetails.lengthSeconds
-  );
-
-  const formats = info.formats.map(
-    ({ url, hasAudio, hasVideo, qualityLabel, container }) => ({
-      url,
-      hasAudio,
-      hasVideo,
-      quality: qualityLabel,
-      mimeType: container,
-    })
-  );
-
-  const formatsInMp4 = formats.filter((format) => format.mimeType === "mp4");
-  const formatsInWebm = formats.filter((format) => format.mimeType === "webm");
-  const formatsInAudio = formats.filter(
-    (format) => format.hasAudio === true && format.hasVideo === false
   );
 
   const response = {
@@ -66,7 +61,7 @@ const handler: NextApiHandler = async (
     url: info.videoDetails.embed.flashSecureUrl,
     mp4: formatsInMp4,
     webm: formatsInWebm,
-    audio: formatsInAudio,
+    audio: filterdOnlyAudio,
   };
 
   res.status(200).json(response);

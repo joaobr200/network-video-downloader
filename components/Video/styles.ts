@@ -1,5 +1,5 @@
 import { css } from "../../stitches.config";
-import Card from "../Card";
+import { Card } from "../Card";
 
 export const Container = css({
   width: "100%",
@@ -7,7 +7,7 @@ export const Container = css({
   margin: "24px auto",
 });
 
-export const VideoArticle = css({
+export const VideoArticle = css(Card, {
   display: "flex",
   width: "100%",
   height: "100%",
@@ -23,8 +23,13 @@ export const VideoArticle = css({
     justifyContent: "flex-start",
     alignItems: "flex-start",
   },
+});
 
-  ...Card,
+export const VideoWrapper = css({
+  width: "100%",
+  height: "100%",
+  display: "flex",
+  flexDirection: "column",
 });
 
 export const Frame = css({
@@ -39,16 +44,12 @@ export const Frame = css({
 
 export const VideoDetails = css({
   width: "90%",
-  height: "100%",
   display: "flex",
-  flex: 1,
   flexDirection: "column",
   gap: "12px",
   marginBottom: "1.5rem",
 
-  "@bp1": {
-    textAlign: "center",
-  },
+  textAlign: "center",
 
   "@bp2": {
     textAlign: "start",
@@ -58,12 +59,18 @@ export const VideoDetails = css({
 
 export const VideoDownload = css({
   width: "100%",
-  height: "100%",
   display: "flex",
   flexWrap: "wrap",
-  alignItems: "center",
   justifyContent: "flex-start",
-  gap: "12px",
+  flexDirection: "column",
+  rowGap: "24px",
+  marginBottom: "24px",
+
+  "> div": {
+    display: "flex",
+    flexWrap: "wrap",
+    gap: "12px",
+  },
 
   "@bp1": {
     justifyContent: "center",
@@ -71,6 +78,47 @@ export const VideoDownload = css({
 
   "@bp2": {
     justifyContent: "flex-start",
+  },
+});
+
+export const VideoBadgeLegend = css({
+  display: "flex",
+  flex: 1,
+  justifyContent: "flex-end",
+  columnGap: "12px",
+
+  "> div": {
+    display: "flex",
+    alignItems: "flex-end",
+    columnGap: "4px",
+
+    "> div": {
+      width: "16px",
+      height: "16px",
+      borderRadius: "50%",
+    },
+
+    "> span": {
+      fontWeight: 700,
+    },
+  },
+
+  "> div.mp4": {
+    "> div": {
+      background: "PaleVioletRed",
+    },
+  },
+
+  "> div.webm": {
+    "> div": {
+      background: "MediumVioletRed",
+    },
+  },
+
+  "> div.audio": {
+    "> div": {
+      background: "BlueViolet",
+    },
   },
 });
 

@@ -44,6 +44,14 @@ export const HeroWrapper = css({
   },
 });
 
+export const HeroImage = css({
+  display: "none",
+
+  "@bp2": {
+    display: "block",
+  },
+});
+
 export const HeroContent = css({
   display: "flex",
   flexDirection: "column",
@@ -84,16 +92,4 @@ export const HeroContent = css({
       lineHeight: "1.7rem",
     },
   },
-});
-
-export const HeroIconButton = css({
-  fontSize: "14px",
-  width: "22px",
-  height: "22px",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  textAlign: "center",
-  background: "$primaryShape",
-  borderRadius: "4px",
 });

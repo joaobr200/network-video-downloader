@@ -4,7 +4,7 @@ interface Return {
   seconds: number | string;
 }
 
-export default function secondsToHms(p: string | number): Return {
+export function formatSeconds(p: string | number): Return {
   const d = Number(p);
 
   const hours = Math.floor(d / 3600);

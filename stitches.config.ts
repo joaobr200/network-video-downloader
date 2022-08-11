@@ -33,11 +33,11 @@ export const globalStyles = globalCss({
     margin: 0,
     padding: 0,
     boxSizing: "border-box",
-    "-webkit-font-smoothing": "antialiased",
-    "-moz-osx-font-smoothing": "grayscale",
   },
   html: {
     scrollBehavior: "smooth",
+    "-webkit-font-smoothing": "antialiased",
+    "-moz-osx-font-smoothing": "grayscale",
   },
 
   body: {
@@ -50,7 +50,8 @@ export const globalStyles = globalCss({
     fontFamily: "Roboto, sans-serif",
   },
 
-  a: {
+  "a, a:hover, a:focus, a:active": {
     textDecoration: "none",
+    color: "inherit",
   },
 });

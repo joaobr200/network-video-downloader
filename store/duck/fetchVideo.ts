@@ -1,11 +1,21 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import api, { AxiosError } from "axios";
 
+type Format = {
+  qualityLabel: string;
+  url: string;
+  hasAudio: boolean;
+  container: string;
+};
+
 interface fetchVideoResponse {
   title: string;
   duration: string;
   embed: string;
   url: string;
+  mp4: Format[];
+  webm: Format[];
+  audio: Format[];
 }
 
 interface fetchVideoResponseError {
