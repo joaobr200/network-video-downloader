@@ -1,31 +1,17 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import Badge from "../Ui/Badge";
 import { useAppDispatch } from "../../store/hook";
 import { cleanVideo } from "../../store/duck/fetchVideo";
 import { useScrollIntoView } from "../../hooks/useScrollIntoView";
+import { VideoEntity } from "../../entity/VideoEntity";
+import Badge from "../Ui/Badge";
 
 import * as S from "./styles";
 import { FiX } from "react-icons/fi";
 import { GoMute } from "react-icons/go";
 
-type Format = {
-  qualityLabel: string;
-  url: string;
-  hasAudio: boolean;
-  container: string;
-};
-
 interface VideoProps {
-  data: {
-    title: string;
-    duration: string;
-    embed: string;
-    url: string;
-    mp4: Format[];
-    webm: Format[];
-    audio: Format[];
-  };
+  data: VideoEntity;
 }
 
 const Video: React.FC<VideoProps> = ({

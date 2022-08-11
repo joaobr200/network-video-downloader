@@ -1,22 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import api, { AxiosError } from "axios";
-
-type Format = {
-  qualityLabel: string;
-  url: string;
-  hasAudio: boolean;
-  container: string;
-};
-
-interface fetchVideoResponse {
-  title: string;
-  duration: string;
-  embed: string;
-  url: string;
-  mp4: Format[];
-  webm: Format[];
-  audio: Format[];
-}
+import { VideoEntity } from "../../entity/VideoEntity";
 
 interface fetchVideoResponseError {
   message: string | undefined;
@@ -25,12 +9,12 @@ interface fetchVideoResponseError {
 }
 
 export const fetchVideo = createAsyncThunk<
-  fetchVideoResponse,
+  VideoEntity,
   string,
   { rejectValue: fetchVideoResponseError }
->("video/fetchVideo", async (url: string, { rejectWithValue }) => {
+>("video/fetchVideo", async (url, { rejectWithValue }) => {
   const response = await api
-    .post<fetchVideoResponse>(`/api/video`, {
+    .post<VideoEntity>(`/api/video`, {
       url,
     })
     .then((r) => r.data)
