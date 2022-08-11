@@ -43,7 +43,7 @@ interface fetchVideoState {
   success: boolean;
   loading: boolean;
   error: fetchVideoResponseError | undefined;
-  data: fetchVideoResponse | null;
+  data: VideoEntity | null;
 }
 
 export const fetchVideoSlice = createSlice({
@@ -76,7 +76,7 @@ export const fetchVideoSlice = createSlice({
 
     addCase(
       fetchVideo.fulfilled,
-      (state, action: PayloadAction<fetchVideoResponse>) => {
+      (state, action: PayloadAction<VideoEntity>) => {
         state.success = true;
         state.loading = false;
         (state.error = errorInitialState), (state.data = action.payload);
