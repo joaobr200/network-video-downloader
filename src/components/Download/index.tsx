@@ -59,7 +59,7 @@ const Download = () => {
   }
 
   return (
-    <section id="download" className={S.DownloadSection()}>
+    <section className={S.DownloadSection()}>
       <form onSubmit={handleSubmit} className={S.From()}>
         <div className={S.InputWrapper()}>
           {inputWithIcon && <NetworkIcon network={inputWithIcon} />}

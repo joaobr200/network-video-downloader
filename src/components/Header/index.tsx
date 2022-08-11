@@ -9,9 +9,9 @@ const Header = () => (
     <div>
       <Link href="/">SV Downloader</Link>
     </div>
-    <div>
+    <button type="button" title="Abrir menu" aria-label="Abrir menu">
       <IoMdMenu className={S.MenuIcon()} />
-    </div>
+    </button>
   </header>
 );
 

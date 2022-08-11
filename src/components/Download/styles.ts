@@ -22,7 +22,7 @@ export const InputWrapper = css({
   position: "relative",
   width: "100%",
 
-  "> svg": {
+  "> span": {
     position: "absolute",
     top: "9px",
     left: "9px  ",

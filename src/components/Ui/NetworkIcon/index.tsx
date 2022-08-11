@@ -9,11 +9,19 @@ interface NetworkIconProps {
 
 function NetworkIcon({ network }: NetworkIconProps) {
   if (network === "youtube") {
-    return <FaYoutube color="#FF0000" />;
+    return (
+      <span id="youtube" aria-label="URL do Youtube">
+        <FaYoutube aria-hidden color="#FF0000" />
+      </span>
+    );
   }
 
   if (network === "error") {
-    return <FiXCircle color="#FF0000" />;
+    return (
+      <span id="error" aria-label="URL inválida">
+        <FiXCircle aria-hidden color="#FF0000" />
+      </span>
+    );
   }
 
   return <></>;

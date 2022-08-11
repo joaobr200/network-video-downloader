@@ -9,9 +9,9 @@ const Loading: React.FC = () => {
   const loadingRef = useRef<HTMLDivElement>(null);
   useScrollIntoView(loadingRef);
   return (
-    <div className={S.Container()} ref={loadingRef}>
+    <div aria-label="Buscando vídeo" className={S.Container()} ref={loadingRef}>
       <div className={S.LoadingWrapper()}>
-        <Spinner />
+        <Spinner aria-hidden />
         <span>Buscando vídeo...</span>
       </div>
     </div>
