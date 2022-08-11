@@ -1,9 +1,10 @@
-import { MutableRefObject, useEffect } from "react";
+import { MutableRefObject } from "react";
+import { useIsomorphicLayoutEffect } from "./useIsomorphicLayoutEffect";
 
 export function useScrollIntoView<T extends HTMLElement | null>(
   ref: MutableRefObject<T>
 ) {
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     ref.current?.scrollIntoView(true);
   }, [ref]);
 
