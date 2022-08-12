@@ -13,7 +13,7 @@ const handler: NextApiHandler = async (
   res: NextApiResponse
 ): Promise<void> => {
   if (req.method !== "POST") {
-    res.status(200).send("Voodo é pra Jacú!");
+    res.status(404).send("Voodo é pra Jacú!");
     return;
   }
 
