@@ -5,10 +5,10 @@ import { cleanVideo } from "../../store/duck/fetchVideo";
 import { useScrollIntoView } from "../../hooks/useScrollIntoView";
 import { VideoEntity } from "../../entity/VideoEntity";
 import Badge from "../Ui/Badge";
+import VolumeIcon from "../Ui/VolumeIcon";
 
 import * as S from "./styles";
 import { FiX } from "react-icons/fi";
-import { GoMute } from "react-icons/go";
 
 interface VideoProps {
   data: VideoEntity;
@@ -47,11 +47,7 @@ const Video: React.FC<VideoProps> = ({
                   <Badge key={item.url}>
                     <a href={item.url} target="_blank" rel="noreferrer">
                       {item.qualityLabel}
-                      {!item.hasAudio && (
-                        <span title="Muted" style={{ marginLeft: 8 }}>
-                          <GoMute aria-hidden color="red" />
-                        </span>
-                      )}
+                      <VolumeIcon hasAudio={item.hasAudio} />
                     </a>
                   </Badge>
                 </>
@@ -64,11 +60,7 @@ const Video: React.FC<VideoProps> = ({
                   <Badge bg="red" key={item.url}>
                     <a href={item.url} target="_blank" rel="noreferrer">
                       {item.qualityLabel}
-                      {!item.hasAudio && (
-                        <span title="Muted" style={{ marginLeft: 8 }}>
-                          <GoMute aria-hidden color="red" />
-                        </span>
-                      )}
+                      <VolumeIcon hasAudio={item.hasAudio} />
                     </a>
                   </Badge>
                 </>
@@ -81,11 +73,7 @@ const Video: React.FC<VideoProps> = ({
                   <Badge bg="blue" key={item.url}>
                     <a href={item.url} target="_blank" rel="noreferrer">
                       {item.container.toUpperCase()}
-                      {!item.hasAudio && (
-                        <span title="Muted" style={{ marginLeft: 8 }}>
-                          <GoMute aria-hidden color="red" />
-                        </span>
-                      )}
+                      <VolumeIcon hasAudio={item.hasAudio} />
                     </a>
                   </Badge>
                 </>
