@@ -36,9 +36,11 @@ export const Frame = css({
   width: "100%",
   height: "333px",
   maxWidth: "500px",
+  marginTop: 12,
 
   "@bp2": {
     height: "100%",
+    marginTop: 0,
   },
 });
 
